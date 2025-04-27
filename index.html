@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <!-- Meta Information
+         Basic SEO and viewport settings -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your description here" />
+    <meta name="keywords" content="keyword1, keyword2, keyword3" />
+    <meta name="author" content="Your Name" />
+    <meta property="og:type" content="website" />
+
+    <!-- Resource Links
+         Stylesheets, icons, and external resources -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon/image.png"
+    />
+    <title>Gabriele Bisceglie Page's</title>
+  </head>
+  <body>
+    <!-- UI Overlays
+         Cursor, particles, and loading screen -->
+    <div class="custom-cursor"></div>
+    <div id="particles-js"></div>
+    <div class="loading">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="progress-bar"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+      <!-- Profile Section
+           User information and avatar -->
+      <div class="profile">
+        <img
+          src="https://media.discordapp.net/attachments/1218945595406811278/1366039493685018685/IMG-20240812-WA0129.jpg?ex=680f7eeb&is=680e2d6b&hm=148cec88923d8124486f34998940912d763f08ae643db6e1390ab424c3f6827c&=&format=webp&width=501&height=669"
+          alt="Profile Picture"
+        />
+        <h1>Gabriele Bisceglie </h1>
+        <p>Developer & Student</p>
+      </div>
+
+      <!-- Share Options
+           Social sharing buttons -->
+      <div class="share-buttons">
+        <button class="share-btn" data-tooltip="Share on Whatsapp">
+          <i class="fab fa-whatsapp"></i> Share
+        </button>
+        <button class="share-btn" data-tooltip="Copy Link">
+          <i class="fas fa-link"></i> Copy
+        </button>
+      </div>
+
+      <!-- Primary Links
+           Main social media links -->
+      <a href="#" class="link-card">
+        <i class="fab fa-whatsapp"></i> Phone Number
+      </a>
+      <a href="#" class="link-card"> <i class="fab fa-instagram"></i> Instagram </a>
+      <a href="#" class="link-card"> <i class="fab fa-tiktok"></i> TikTok </a>
+      <a href="#" class="link-card"> <i class="fab fa-github"></i> GitHub </a>
+
+      <!-- Dropdown Menu
+           Additional links section -->
+      <div class="dropdown">
+        <a href="#" class="link-card disabled" id="dropdown-toggle">
+          <span class="coming-soon">Coming Soon!</span>
+          <i class="fas fa-ellipsis-h"></i> More Links
+        </a>
+        <div class="dropdown-content">
+          <a href="#" class="link-card">Other</a>
+          <a href="#" class="link-card">Mail: gabriele.bisceglie209@gmail.com </a>
+        </div>
+      </div>
+
+      <!-- Music Player
+           Audio player component -->
+      <div class="music-player">
+        <h3>Now Playing</h3>
+        <p id="song-title">Select a song</p>
+        <div class="music-controls">
+          <button class="music-btn" id="prev">
+            <i class="fas fa-backward"></i>
+          </button>
+          <button class="music-btn" id="play">
+            <i class="fas fa-play"></i>
+          </button>
+          <button class="music-btn" id="next">
+            <i class="fas fa-forward"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- View Counter
+           Page view statistics -->
+      <div class="view-counter">
+        <i class="fas fa-eye"></i> <span id="viewCount">0</span> views
+      </div>
+    </div>
+
+    <!-- Scripts
+         External libraries and main script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
