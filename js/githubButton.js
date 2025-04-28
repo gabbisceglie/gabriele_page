@@ -1,8 +1,8 @@
 document.querySelector('.link-card i.fab.fa-github').parentElement.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const githubAppUrl = "github://profile/nonsonogabriel";
-    const githubWebUrl = "https://github.com/nonsonogabriel";
+    const githubAppUrl = "github://profile/gabbiscieglie";
+    const githubWebUrl = "https://github.com/gabbisceglie";
 
     // Controlla se l'utente è su un dispositivo mobile
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
