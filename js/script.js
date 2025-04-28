@@ -243,17 +243,13 @@ document.querySelectorAll(".link-card.disabled").forEach((link) => {
 
 //-------------------------------------------------------------------------
 
-
-//Pulsante Share
-// ...existing code...
-
 // Pulsante Share
 document.querySelector('.share-btn[data-tooltip="Share on Whatsapp"]').addEventListener('click', function () {
   const link = "https://gabbisceglie.github.io/gabriele_page/";
   const message = "Ciao! Dai un'occhiata a questa pagina: " + link;
 
   if (navigator.share) {
-    // Usa l'API di condivisione nativa se disponibile
+    // Usa l'API di condivisione se disponibile
     navigator.share({
       title: 'Condividi questa pagina',
       text: message,
@@ -267,5 +263,3 @@ document.querySelector('.share-btn[data-tooltip="Share on Whatsapp"]').addEventL
     window.open(whatsappUrl, '_blank');
   }
 });
-
-// ...existing code...
