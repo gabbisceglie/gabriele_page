@@ -1,7 +1,7 @@
 document.querySelector('.link-card i.fab.fa-tiktok').parentElement.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const tiktokAppUrl = "snssdk1128://user/profile/gabriele.bisceglie_"; // Sostituisci "your_tiktok_id" con il tuo ID TikTok
+    const tiktokAppUrl = "tiktok://user/profile/gabriele.bisceglie_"; // Sostituisci "your_tiktok_id" con il tuo ID TikTok
     const tiktokWebUrl = "https://www.tiktok.com/@gabriele.bisceglie_"; // Sostituisci "your_tiktok_id" con il tuo ID TikTok
 
     // Controlla se l'utente è su un dispositivo mobile
