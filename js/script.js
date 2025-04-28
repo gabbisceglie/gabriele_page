@@ -240,3 +240,13 @@ document.querySelectorAll(".link-card.disabled").forEach((link) => {
     e.preventDefault();
   });
 });
+
+//-------------------------------------------------------------------------
+
+
+//Pulsante Share
+document.querySelector('.share-btn[data-tooltip="Share on Whatsapp"]').addEventListener('click', function () {
+  const message = encodeURIComponent("Ciao! Dai un'occhiata a questa pagina: https://gabbisceglie.github.io/gabriele_page/");
+  const whatsappUrl = `https://wa.me/?text=${message}`;
+  window.open(whatsappUrl, '_blank');
+});
