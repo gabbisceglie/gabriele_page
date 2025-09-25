@@ -26,8 +26,7 @@
   </head>
   <body>
     <!-- UI Overlays
-         Cursor, particles, and loading screen -->
-    <div class="custom-cursor"></div>
+         Particles and loading screen -->
     <div id="particles-js"></div>
     <div class="loading">
       <div class="loading-spinner"></div>
@@ -48,6 +47,8 @@
         <img
           src="https://media.discordapp.net/attachments/1218945595406811278/1366039493685018685/IMG-20240812-WA0129.jpg?ex=680f7eeb&is=680e2d6b&hm=148cec88923d8124486f34998940912d763f08ae643db6e1390ab424c3f6827c&=&format=webp&width=501&height=669"
           alt="Profile Picture"
+          id="profile-img"
+          onerror="handleImageError(this)"
         />
         <h1>Gabriele Bisceglie </h1>
         <p>Developer & Student</p>

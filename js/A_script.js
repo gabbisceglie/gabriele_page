@@ -25,7 +25,7 @@ themeToggle.addEventListener("click", () => {
 // Particle System Management
 // Updates particle colors based on current theme
 function updateParticlesColor(theme) {
-  const particlesColor = theme === "dark" ? "#535030" : "#847c4d";
+  const particlesColor = theme === "dark" ? "#b96900" : "#847c4d";
   pJSDom[0].pJS.particles.color.value = particlesColor;
   pJSDom[0].pJS.particles.line_linked.color = particlesColor;
   pJSDom[0].pJS.fn.particlesRefresh();
@@ -94,39 +94,27 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Custom Cursor Implementation
-// Creates a following cursor effect
-const cursor = document.querySelector(".custom-cursor");
-document.addEventListener("mousemove", (e) => {
-  const cursorSize = 20; // Must match the width/height in CSS
-  cursor.style.left = e.clientX - cursorSize / 2 + "px";
-  cursor.style.top = e.clientY - cursorSize / 2 + "px";
-});
-
-document.addEventListener("mousedown", () => cursor.classList.add("active"));
-document.addEventListener("mouseup", () => cursor.classList.remove("active"));
-
 // Particle.js Configuration
 // Sets up the background particle system with theme-aware colors
 particlesJS("particles-js", {
   particles: {
-    number: { value: 50 }, // Reduced number of particles
-    color: { value: savedTheme === "dark" ? "#535030" : "#847c4d" },
+    number: { value: 60 }, // Increased number of particles for more "lightning" connections
+    color: { value: savedTheme === "dark" ? "#b96900" : "#847c4d" },
     shape: { type: "circle" },
     opacity: {
-      value: 0.3,
+      value: 0.6,
       random: true,
     },
     size: {
-      value: 2,
+      value: 3,
       random: true,
     },
     line_linked: {
       enable: true,
-      distance: 150,
-      color: savedTheme === "dark" ? "#535030" : "#847c4d",
-      opacity: 0.3,
-      width: 1,
+      distance: 200,
+      color: savedTheme === "dark" ? "#b96900" : "#847c4d",
+      opacity: 0.7,
+      width: 2,
     },
     move: {
       enable: true,
@@ -156,7 +144,7 @@ particlesJS("particles-js", {
       grab: {
         distance: 140,
         line_linked: {
-          opacity: 0.5,
+          opacity: 1.0,
         },
       },
     },
@@ -242,4 +230,46 @@ document.querySelectorAll(".link-card.disabled").forEach((link) => {
 });
 
 //-------------------------------------------------------------------------
+
+// Image Loading Handler
+// Handles profile image loading errors with fallback
+function handleImageError(img) {
+  console.warn('Primary image failed to load, trying fallback...');
+  
+  // First fallback - try a more reliable placeholder service
+  if (!img.dataset.fallbackAttempted) {
+    img.dataset.fallbackAttempted = 'true';
+    img.src = 'https://raw.githubusercontent.com/gabbisceglie/gabriele_page/refs/heads/main/images/images.png';
+    return;
+  }
+
+  
+  // Second fallback - create a CSS-based avatar
+  if (!img.dataset.cssAvatarCreated) {
+    img.dataset.cssAvatarCreated = 'true';
+    img.style.display = 'none';
+    
+    const avatarDiv = document.createElement('div');
+    avatarDiv.className = 'css-avatar';
+    avatarDiv.textContent = 'GB';
+    img.parentNode.insertBefore(avatarDiv, img.nextSibling);
+  }
+}
+
+// Retry image loading periodically
+function retryImageLoading() {
+  const img = document.getElementById('profile-img');
+  if (img && img.style.display === 'none') {
+    // Try to reload original image every 30 seconds
+    const originalSrc = img.getAttribute('src');
+    if (originalSrc.includes('discordapp')) {
+      // Add timestamp to bypass cache
+      const separator = originalSrc.includes('?') ? '&' : '?';
+      img.src = originalSrc + separator + 't=' + Date.now();
+    }
+  }
+}
+
+// Retry every 30 seconds
+setInterval(retryImageLoading, 30000);
 

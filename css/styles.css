@@ -234,6 +234,32 @@ body {
   animation-duration: 1.5s;
 }
 
+/* CSS Avatar Fallback
+   Styled avatar when image fails to load */
+.css-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  border: 4px solid var(--accent-color);
+  padding: 5px;
+  background: linear-gradient(135deg, var(--accent-color), #d4a829);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: breathing-border 3s infinite ease-in-out;
+  transition: all 0.3s ease;
+}
+
+.css-avatar:hover {
+  transform: scale(1.05) rotate(5deg);
+  animation-duration: 1.5s;
+}
+
 .profile h1 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -368,21 +394,6 @@ body {
   }
 }
 
-/* Custom Cursor
-   Custom cursor styling and behavior */
-.custom-cursor {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--accent-color);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease, top 0.15s ease, left 0.15s ease;
-  mix-blend-mode: difference;
-  will-change: transform;
-}
-
 /* Particle System
    Background particle effect styling */
 #particles-js {
@@ -395,10 +406,30 @@ body {
   will-change: transform;
 }
 
+/* Enhanced lightning effect on hover */
+body:hover #particles-js canvas {
+  filter: drop-shadow(0 0 8px var(--accent-color)) brightness(1.3);
+  animation-duration: 1.5s;
+}
+
 /* Update particles opacity and color transition */
 #particles-js canvas {
   opacity: 100 !important;
   transition: all 0.3s ease;
+  filter: drop-shadow(0 0 3px var(--accent-color));
+  animation: lightning-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes lightning-glow {
+  0% {
+    filter: drop-shadow(0 0 3px var(--accent-color)) brightness(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px var(--accent-color)) brightness(1.2);
+  }
+  100% {
+    filter: drop-shadow(0 0 3px var(--accent-color)) brightness(1);
+  }
 }
 
 /* Music Player
