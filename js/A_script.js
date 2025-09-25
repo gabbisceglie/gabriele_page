@@ -1,35 +1,7 @@
 // Theme Management
-// Handles dark/light mode switching and persists theme choice in localStorage
-const themeToggle = document.querySelector(".theme-toggle");
+// Site uses dark theme only
 const htmlElement = document.documentElement;
-const themeIcon = document.querySelector(".theme-toggle i");
-
-// Load saved theme or default to dark
-const savedTheme = localStorage.getItem("theme") || "dark";
-htmlElement.setAttribute("data-theme", savedTheme);
-themeIcon.className = savedTheme === "dark" ? "fas fa-moon" : "fas fa-sun";
-
-// Theme toggle event handler with particle color update
-themeToggle.addEventListener("click", () => {
-  const currentTheme = htmlElement.getAttribute("data-theme");
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-  htmlElement.setAttribute("data-theme", newTheme);
-  themeIcon.className = newTheme === "dark" ? "fas fa-moon" : "fas fa-sun";
-  localStorage.setItem("theme", newTheme);
-
-  // Update particles color based on theme
-  updateParticlesColor(newTheme);
-});
-
-// Particle System Management
-// Updates particle colors based on current theme
-function updateParticlesColor(theme) {
-  const particlesColor = theme === "dark" ? "#b96900" : "#847c4d";
-  pJSDom[0].pJS.particles.color.value = particlesColor;
-  pJSDom[0].pJS.particles.line_linked.color = particlesColor;
-  pJSDom[0].pJS.fn.particlesRefresh();
-}
+htmlElement.setAttribute("data-theme", "dark");
 
 // Loading Screen
 // Shows loading animation for 1 second before revealing content
@@ -37,17 +9,6 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     document.querySelector(".loading").classList.add("hidden");
   }, 1000);
-});
-
-// Scroll Progress Indicator
-// Shows reading progress at the top of the page
-window.addEventListener("scroll", () => {
-  const winScroll = document.documentElement.scrollTop;
-  const height =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  document.querySelector(".progress-bar").style.width = scrolled + "%";
 });
 
 // Social Share System
@@ -95,11 +56,11 @@ document.addEventListener("click", (e) => {
 });
 
 // Particle.js Configuration
-// Sets up the background particle system with theme-aware colors
+// Sets up the background particle system with dark theme colors
 particlesJS("particles-js", {
   particles: {
     number: { value: 60 }, // Increased number of particles for more "lightning" connections
-    color: { value: savedTheme === "dark" ? "#b96900" : "#847c4d" },
+    color: { value: "#b96900" }, // Fixed dark theme color
     shape: { type: "circle" },
     opacity: {
       value: 0.6,
@@ -112,7 +73,7 @@ particlesJS("particles-js", {
     line_linked: {
       enable: true,
       distance: 200,
-      color: savedTheme === "dark" ? "#b96900" : "#847c4d",
+      color: "#b96900", // Fixed dark theme color
       opacity: 0.7,
       width: 2,
     },

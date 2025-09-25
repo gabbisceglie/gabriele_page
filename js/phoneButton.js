@@ -138,11 +138,39 @@ class PhoneProtection {
             phoneLink.innerHTML = `
                 <i class="fas fa-phone"></i> ${this.phoneNumber}
             `;
-            phoneLink.href = `tel:${this.phoneNumber.replace(/\s/g, '')}`;
+            phoneLink.href = "#"; // Non apre il telefono
             phoneLink.classList.add('phone-revealed');
             
-            // Rimuovi l'event listener del click
-            phoneLink.replaceWith(phoneLink.cloneNode(true));
+            // Rimuovi tutti gli event listener esistenti clonando l'elemento
+            const newPhoneLink = phoneLink.cloneNode(true);
+            phoneLink.parentNode.replaceChild(newPhoneLink, phoneLink);
+            
+            // Aggiungi solo l'event listener per nascondere il numero
+            newPhoneLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.hidePhoneNumber(newPhoneLink);
+            });
+        }
+    }
+
+    // Nasconde il numero di telefono e ripristina il bottone originale
+    hidePhoneNumber(phoneLink) {
+        if (phoneLink) {
+            phoneLink.innerHTML = `
+                <i class="fab fa-whatsapp"></i> Phone Number
+            `;
+            phoneLink.href = "#";
+            phoneLink.classList.remove('phone-revealed');
+            
+            // Rimuovi tutti gli event listener esistenti clonando l'elemento
+            const newPhoneLink = phoneLink.cloneNode(true);
+            phoneLink.parentNode.replaceChild(newPhoneLink, phoneLink);
+            
+            // Aggiungi solo l'event listener per mostrare il modal password
+            newPhoneLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showPasswordModal();
+            });
         }
     }
 
