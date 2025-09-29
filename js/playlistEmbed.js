@@ -12,20 +12,6 @@ const defaultPlaylistData = {
   url: "https://open.spotify.com/playlist/5zTi5sHugwqPp9gnlVMRiJ?si=f62320ccade845bd"
 };
 
-function extractPlaylistId(url) {
-  // Extract playlist ID from various Spotify URL formats
-  const patterns = [
-    /open\.spotify\.com\/playlist\/([a-zA-Z0-9]+)/,
-    /spotify:playlist:([a-zA-Z0-9]+)/
-  ];
-  
-  for (const pattern of patterns) {
-    const match = url.match(pattern);
-    if (match) return match[1];
-  }
-  return null;
-}
-
 function createDiscordEmbed(playlistData) {
   return `
     <div class="discord-embed">
@@ -117,41 +103,21 @@ function showLoadingEmbed() {
   `;
 }
 
-function showErrorEmbed(error) {
-  return `
-    <div class="discord-embed error">
-      <div class="embed-color-bar error"></div>
-      <div class="embed-content">
-        <div class="embed-header">
-          <div class="spotify-icon error">
-            <i class="fas fa-exclamation-triangle"></i>
-          </div>
-          <div class="provider-info">
-            <span class="provider-name error">Error</span>
-            <span class="embed-type">Invalid Link</span>
-          </div>
-        </div>
-        
-        <div class="embed-body">
-          <div class="embed-info">
-            <h3 class="embed-title error">Unable to load playlist</h3>
-            <p class="embed-description">${error}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-
-
-// Auto-load default playlist
-document.addEventListener('DOMContentLoaded', () => {
+// Auto-load default playlist when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Loading playlist embed...');
   loadDefaultPlaylist();
 });
 
 function loadDefaultPlaylist() {
   const embedContainer = document.getElementById('playlist-embed');
+  
+  if (!embedContainer) {
+    console.error('Embed container not found!');
+    return;
+  }
+  
+  console.log('Found embed container, loading playlist...');
   
   // Show loading state briefly for smooth transition
   embedContainer.innerHTML = showLoadingEmbed();
@@ -159,5 +125,6 @@ function loadDefaultPlaylist() {
   // Load the default playlist after a short delay
   setTimeout(() => {
     embedContainer.innerHTML = createDiscordEmbed(defaultPlaylistData);
+    console.log('Playlist embed loaded successfully!');
   }, 800);
 }
