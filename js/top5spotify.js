@@ -29,21 +29,45 @@ async function displayTopTracks() {
     
     if (topTracks && topTracks.length > 0) {
       const tracksList = topTracks.map(
-        ({name, artists}, index) =>
-          `<div class="track-item">
-            <span class="track-number">${index + 1}.</span>
-            <span class="track-info">${name} by ${artists.map(artist => artist.name).join(', ')}</span>
-          </div>`
+        ({name, artists, duration_ms}, index) => {
+          const duration = formatDuration(duration_ms);
+          const artistNames = artists.map(artist => artist.name).join(', ');
+          
+          return `<div class="track-item">
+            <span class="track-number">${index + 1}</span>
+            <div class="track-info">
+              <div class="track-title">${name}</div>
+              <div class="track-artist">${artistNames}</div>
+            </div>
+            <span class="track-duration">${duration}</span>
+          </div>`;
+        }
       ).join('');
       
       tracksContainer.innerHTML = tracksList;
     } else {
-      tracksContainer.innerHTML = '<p>Unable to load tracks. Please check your Spotify authorization.</p>';
+      tracksContainer.innerHTML = `
+        <div class="loading-track">
+          <p style="color: rgba(255,255,255,0.7);">Unable to load tracks. Please check your Spotify authorization.</p>
+        </div>
+      `;
     }
   } catch (error) {
     console.error('Error fetching top tracks:', error);
-    document.getElementById('spotify-tracks').innerHTML = '<p>Error loading tracks. Please try again later.</p>';
+    document.getElementById('spotify-tracks').innerHTML = `
+      <div class="loading-track">
+        <p style="color: rgba(255,255,255,0.7);">Error loading tracks. Please try again later.</p>
+      </div>
+    `;
   }
+}
+
+// Helper function to format duration from milliseconds to mm:ss
+function formatDuration(ms) {
+  if (!ms) return '0:00';
+  const minutes = Math.floor(ms / 60000);
+  const seconds = Math.floor((ms % 60000) / 1000);
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
 // Load top tracks when the page is ready

@@ -80,12 +80,45 @@
         </div>
       </div>
 
-      <!-- Spotify Top 5
-           Top 5 most played tracks -->
-      <div class="music-player">
-        <h3>My Top 5 Spotify Tracks</h3>
-        <div id="spotify-tracks">
-          <p>Loading your top tracks...</p>
+      <!-- Spotify Playlist
+           Top 5 most played tracks in Spotify style -->
+      <div class="spotify-playlist">
+        <div class="playlist-header">
+          <div class="playlist-cover">
+            <i class="fab fa-spotify"></i>
+          </div>
+          <div class="playlist-info">
+            <p class="playlist-type">Playlist</p>
+            <h2 class="playlist-title">My Top 5 Tracks</h2>
+            <p class="playlist-description">Your most played songs on Spotify</p>
+            <div class="playlist-stats">
+              <span><i class="fab fa-spotify"></i> Spotify</span>
+              <span>• 5 songs</span>
+            </div>
+          </div>
+        </div>
+        <div class="playlist-controls">
+          <button class="play-button">
+            <i class="fas fa-play"></i>
+          </button>
+          <button class="more-options">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+        </div>
+        <div class="tracks-container">
+          <div class="tracks-header">
+            <span class="track-number-header">#</span>
+            <span class="track-title-header">Title</span>
+            <span class="track-duration-header"><i class="far fa-clock"></i></span>
+          </div>
+          <div id="spotify-tracks">
+            <div class="loading-track">
+              <div class="loading-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <p>Loading your top tracks...</p>
+            </div>
+          </div>
         </div>
       </div>
 
