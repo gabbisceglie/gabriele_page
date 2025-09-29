@@ -1,15 +1,15 @@
 // Playlist Embed System
 // Creates Discord-style embeds for Spotify playlist links
 
-// Mock data for demonstration (in real implementation, you'd fetch from Spotify API)
-const mockPlaylistData = {
-  name: "My Awesome Playlist",
-  description: "The best songs for coding and vibing",
+// Default playlist data for the specific playlist
+const defaultPlaylistData = {
+  name: "Gabriele's Playlist",
+  description: "My personal music collection",
   owner: "Gabriele Bisceglie",
   image: "https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a",
-  tracks: 47,
-  followers: 128,
-  url: "https://open.spotify.com/playlist/37i9dQZF1DX0XUsuxWHRQd"
+  tracks: 42,
+  followers: 25,
+  url: "https://open.spotify.com/playlist/5zTi5sHugwqPp9gnlVMRiJ?si=f62320ccade845bd"
 };
 
 function extractPlaylistId(url) {
@@ -143,70 +143,21 @@ function showErrorEmbed(error) {
   `;
 }
 
-async function loadPlaylist(url) {
-  const embedContainer = document.getElementById('playlist-embed');
-  const playlistId = extractPlaylistId(url);
-  
-  if (!playlistId) {
-    embedContainer.innerHTML = showErrorEmbed('Please enter a valid Spotify playlist URL');
-    embedContainer.classList.remove('hidden');
-    return;
-  }
-  
-  // Show loading state
-  embedContainer.innerHTML = showLoadingEmbed();
-  embedContainer.classList.remove('hidden');
-  
-  // Simulate API call delay
-  setTimeout(() => {
-    try {
-      // In a real implementation, you would fetch data from Spotify API here
-      // For now, we'll use mock data
-      const playlistData = {
-        ...mockPlaylistData,
-        url: url
-      };
-      
-      embedContainer.innerHTML = createDiscordEmbed(playlistData);
-    } catch (error) {
-      embedContainer.innerHTML = showErrorEmbed('Failed to load playlist data');
-    }
-  }, 1500);
-}
 
-// Event listeners
+
+// Auto-load default playlist
 document.addEventListener('DOMContentLoaded', () => {
-  const urlInput = document.getElementById('playlist-url');
-  const loadButton = document.getElementById('load-playlist');
-  
-  if (loadButton) {
-    loadButton.addEventListener('click', () => {
-      const url = urlInput.value.trim();
-      if (url) {
-        loadPlaylist(url);
-      } else {
-        const embedContainer = document.getElementById('playlist-embed');
-        embedContainer.innerHTML = showErrorEmbed('Please enter a playlist URL');
-        embedContainer.classList.remove('hidden');
-      }
-    });
-  }
-  
-  if (urlInput) {
-    urlInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        loadButton.click();
-      }
-    });
-    
-    // Auto-detect and load when a valid URL is pasted
-    urlInput.addEventListener('paste', (e) => {
-      setTimeout(() => {
-        const url = e.target.value.trim();
-        if (extractPlaylistId(url)) {
-          setTimeout(() => loadPlaylist(url), 500);
-        }
-      }, 100);
-    });
-  }
+  loadDefaultPlaylist();
 });
+
+function loadDefaultPlaylist() {
+  const embedContainer = document.getElementById('playlist-embed');
+  
+  // Show loading state briefly for smooth transition
+  embedContainer.innerHTML = showLoadingEmbed();
+  
+  // Load the default playlist after a short delay
+  setTimeout(() => {
+    embedContainer.innerHTML = createDiscordEmbed(defaultPlaylistData);
+  }, 800);
+}
