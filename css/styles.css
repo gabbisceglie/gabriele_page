@@ -1160,322 +1160,125 @@ body:hover #particles-js canvas {
   }
 }
 
-/* Playlist Input Section */
-.playlist-input-section {
+/* Simple Playlist Interface */
+.playlist-container {
   text-align: center;
-  margin-bottom: 1.5rem;
 }
 
-.playlist-input-section h3 {
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-
-.input-container {
-  display: flex;
-  gap: 0.5rem;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.playlist-input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-color);
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.playlist-input:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(185, 105, 0, 0.1);
-}
-
-.playlist-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.load-btn {
-  padding: 0.75rem 1rem;
-  background: var(--accent-color);
-  border: none;
-  border-radius: 8px;
-  color: var(--text-color);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.load-btn:hover {
-  background: #d4820b;
-  transform: translateY(-1px);
-}
-
-/* Discord Embed Styles */
-.playlist-embed {
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-}
-
-.playlist-embed.hidden {
-  display: none;
-}
-
-.discord-embed {
-  background: #2f3136;
-  border-radius: 4px;
-  border-left: 4px solid #1db954;
-  overflow: hidden;
-  max-width: 500px;
-  margin: 0 auto;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.discord-embed.error {
-  border-left-color: #ed4245;
-}
-
-.discord-embed.loading {
-  border-left-color: #5865f2;
-}
-
-.embed-color-bar {
-  width: 4px;
-  height: 100%;
-  background: #1db954;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.embed-color-bar.error {
-  background: #ed4245;
-}
-
-.embed-content {
-  padding: 1rem;
-  position: relative;
-}
-
-.embed-header {
+.playlist-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
 }
 
-.spotify-icon {
-  width: 20px;
-  height: 20px;
+.playlist-cover {
+  width: 60px;
+  height: 60px;
+  background: #1db954;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1db954;
-}
-
-.spotify-icon.error {
-  color: #ed4245;
-}
-
-.provider-info {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.75rem;
-}
-
-.provider-name {
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.provider-name.error {
-  color: #ed4245;
-}
-
-.embed-type {
-  color: #b9bbbe;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.embed-body {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.embed-thumbnail {
   flex-shrink: 0;
 }
 
-.embed-thumbnail img {
-  width: 80px;
-  height: 80px;
-  border-radius: 4px;
-  object-fit: cover;
+.playlist-cover i {
+  font-size: 1.5rem;
+  color: white;
 }
 
-.loading-placeholder {
-  width: 80px;
-  height: 80px;
-  background: #40444b;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #72767d;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.embed-info {
+.playlist-info {
   flex: 1;
-  min-width: 0;
+  text-align: left;
 }
 
-.embed-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #00aff4;
+.playlist-info h3 {
+  margin: 0 0 0.25rem 0;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.playlist-info p {
   margin: 0 0 0.5rem 0;
-  text-decoration: none;
-  cursor: pointer;
-  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
 }
 
-.embed-title:hover {
-  text-decoration: underline;
+.playlist-stats {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.embed-title.error {
-  color: #ed4245;
-}
-
-.embed-description {
-  font-size: 0.875rem;
-  color: #dcddde;
-  margin: 0 0 0.75rem 0;
-  line-height: 1.3;
-}
-
-.embed-fields {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.5rem;
-}
-
-.embed-field {
+.playlist-controls {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.field-name {
-  font-size: 0.75rem;
+.play-all-btn {
+  background: #1db954;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  color: white;
   font-weight: 600;
-  color: #b9bbbe;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.field-value {
-  font-size: 0.875rem;
-  color: #dcddde;
-}
-
-.embed-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 0.5rem;
-  border-top: 1px solid #40444b;
-}
-
-.embed-link {
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #00aff4;
+}
+
+.play-all-btn:hover {
+  background: #1ed760;
+  transform: scale(1.05);
+}
+
+.spotify-link {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  color: var(--text-color);
   text-decoration: none;
-  font-size: 0.875rem;
-  transition: color 0.3s ease;
-}
-
-.embed-link:hover {
-  color: #0099cc;
-}
-
-.embed-timestamp {
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  font-size: 0.75rem;
-  color: #72767d;
-}
-
-/* Loading Animation */
-.loading-text {
-  display: flex;
-  flex-direction: column;
   gap: 0.5rem;
 }
 
-.loading-bar {
-  height: 12px;
-  background: #40444b;
-  border-radius: 6px;
-  animation: loading-shimmer 1.5s infinite;
-}
-
-.loading-bar.short {
-  width: 60%;
-}
-
-.loading-bar.medium {
-  width: 80%;
-}
-
-@keyframes loading-shimmer {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
+.spotify-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .input-container {
+  .playlist-header {
     flex-direction: column;
-    max-width: 300px;
+    text-align: center;
+    gap: 0.75rem;
   }
   
-  .discord-embed {
-    max-width: 100%;
+  .playlist-info {
+    text-align: center;
   }
   
-  .embed-body {
+  .playlist-controls {
     flex-direction: column;
     gap: 0.75rem;
   }
   
-  .embed-thumbnail {
-    align-self: center;
-  }
-  
-  .embed-fields {
-    grid-template-columns: 1fr;
-  }
-  
-  .embed-footer {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
+  .play-all-btn, .spotify-link {
+    width: 100%;
+    justify-content: center;
   }
 }
   }
