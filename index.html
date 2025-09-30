@@ -80,36 +80,18 @@
         </div>
       </div>
 
-      <!-- Playlist Interface
-           Simple playlist display -->
-      <div class="music-player">
-        <div class="playlist-container">
-          <div class="playlist-header">
-            <div class="playlist-cover">
-              <i class="fab fa-spotify"></i>
-            </div>
-            <div class="playlist-info">
-              <h3>Gabriele's Playlist</h3>
-              <p>My personal music collection</p>
-              <div class="playlist-stats">
-                <span>42 songs</span> • <span>2h 47m</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="playlist-controls">
-            <button class="play-all-btn">
-              <i class="fas fa-play"></i>
-              Play
-            </button>
-            <a href="https://open.spotify.com/playlist/5zTi5sHugwqPp9gnlVMRiJ?si=f62320ccade845bd" 
-               target="_blank" class="spotify-link">
-              <i class="fab fa-spotify"></i>
-              Open in Spotify
-            </a>
-          </div>
-        </div>
-      </div>
+      <!-- Spotify Playlist -->
+      <iframe 
+        data-testid="embed-iframe" 
+        style="border-radius:12px" 
+        src="https://open.spotify.com/embed/playlist/5zTi5sHugwqPp9gnlVMRiJ?utm_source=generator&theme=0" 
+        width="100%" 
+        height="352" 
+        frameBorder="0" 
+        allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>
 
       <!-- View Counter
            Page view statistics -->
@@ -129,6 +111,7 @@
     <script src="js/githubButton.js"></script>
     <script src="js/spotifyButton.js"></script>
     <script src="js/phoneButton.js"></script>
+    <script src="js/viewCounter.js"></script>
 
   </body>
 </html>
